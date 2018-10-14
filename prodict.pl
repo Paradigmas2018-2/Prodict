@@ -58,6 +58,11 @@ query_possibilities(LikesMath, LikesTransports, LikesBuildings, LikesProducts, L
   forall(engineering_course(Name, LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers), (write('- '), write(Name), nl)),
   end_game.
   
+query_all_remaining_possibilities(LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers):-
+  write('Foram muitas perguntas, mas acho que você se encaixaria em uma destas engenharias: '), nl,
+  forall(engineering_course(Name, LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers), (write('- '), write(Name), nl)),
+  end_game.
+
 user_likes_math :-
   write('Voce gosta de exatas (s/n)? '),
   read(Answer),
@@ -186,7 +191,7 @@ user_likes_electronics :-
 user_wants_publicuniversities :-
   write('Voce pretende cursar em uma instituicao publica (s/n)? '),
   read(Answer),
-  asserta(profile(love, Answer)),
+  asserta(profile(likesPublicUniversities, Answer)),
   profile(likesMath, LikesMath),
   profile(likesTransports, LikesTransports),
   profile(likesBuildings, LikesBuildings),
@@ -197,14 +202,14 @@ user_wants_publicuniversities :-
   profile(likesMilitary, LikesMilitary),
   profile(likesHardware, LikesHardware),
   profile(likesElectronics, LikesElectronics),
-  profile(love, LikesPublicUniversities),
+  profile(likesPublicUniversities, LikesPublicUniversities),
   query_possibilities(LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, _);
   user_likes_computers.
 
 user_likes_computers :-
   write('Voce gosta de entender o funcionamento de computadores (s/n)? '),
   read(Answer),
-  asserta(profile(honor, Answer)),
+  asserta(profile(likesComputers, Answer)),
   profile(likesMath, LikesMath),
   profile(likesTransports, LikesTransports),
   profile(likesBuildings, LikesBuildings),
@@ -215,9 +220,24 @@ user_likes_computers :-
   profile(likesMilitary, LikesMilitary),
   profile(likesHardware, LikesHardware),
   profile(likesElectronics, LikesElectronics),
-  profile(love, LikesPublicUniversities),
-  profile(honor, LikesComputers),
+  profile(likesPublicUniversities, LikesPublicUniversities),
+  profile(likesComputers, LikesComputers),
   query_possibilities(LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers);
-  write('Arghhh!!! Não!!!'), new_round.
+  user_likes_many_engineerings.
+
+user_likes_many_engineerings :- 
+  profile(likesMath, LikesMath),
+  profile(likesTransports, LikesTransports),
+  profile(likesBuildings, LikesBuildings),
+  profile(likesProducts, LikesProducts),
+  profile(likesAutomation, LikesAutomation),
+  profile(likesStudies, LikesStudies),
+  profile(likesNature, LikesNature),
+  profile(likesMilitary, LikesMilitary),
+  profile(likesHardware, LikesHardware),
+  profile(likesElectronics, LikesElectronics),
+  profile(likesPublicUniversities, LikesPublicUniversities),
+  profile(likesComputers, LikesComputers),
+  query_all_remaining_possibilities(LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers).
 
 ?- start_game.
