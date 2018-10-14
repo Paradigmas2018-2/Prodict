@@ -18,7 +18,7 @@ engineering_course('Engenharia Eletrica', s, _, n, _, _, _, n, _, s, _, _, n).
 engineering_course('Engenharia Eletronica', s, n, n, _, s, _, n, _, s, s, _, s).
 engineering_course('Engenharia Florestal', s, n, n, n, n, _, s, n, s, n, _, n).
 engineering_course('Engenharia Industrial', s, _, s, s, _, n, n, s, s, _, _, n).
-engineering_course('Engenharia Mecatronica', s, n, n, _, s, _, n, _, s, s, _, _).
+engineering_course('Engenharia Mecatronica', s, n, n, _, s, _, n, _, s, s, _, s).
 engineering_course('Engenharia Naval', s, s, s, s, _, _, s, s, s, _, _, n).
 engineering_course('Engenharia Sanitaria', s, n, s, n, n, _, n, n, s, n, _, n).
 engineering_course('Engenharia em Tecnologia Textil e da Indumentaria', s, n, n, s, n, _, _, n, s, _, _, n).
@@ -35,7 +35,7 @@ engineering_course('Engenharia de Producao', s, n, n, s, _, s, n, _, _, _, _, n)
 engineering_course('Engenharia de Telecomunicacoes', s, n, n, n, _, s, n, n, _, _, _, s).
 engineering_course('Engenharia Fisica', s, n, n, _, _, _, n, s, s, _, _, n).
 engineering_course('Engenharia Hidrica', s, n, _, _, n, s, s, n, _, n, s, n).
-engineering_course('Engenharia Mecanica', s, _, s, s, s, n, n, _, s, _, s, _).
+engineering_course('Engenharia Mecanica', s, _, s, s, s, n, n, _, s, _, s, n).
 engineering_course('Engenharia Metalurgica', s, n, n, s, n, n, s, n, s, n, s, n).
 engineering_course('Engenharia Quimica', s, n, n, s, n, s, _, _, n, n, s, n).
 engineering_course('Engenharia Textil', s, n, s, s, s, n, n, _, s, s, s, n).
@@ -47,7 +47,7 @@ start_game :-
 end_game :-
   nl, nl, write('Boa sorte na sua escolha!'), nl, nl, !, halt.
 
-query_possibilities(LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers):- 
+query_possibilities(LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers):-
   findall(Y, engineering_course(Y, LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers), L),
   length(L, N), N == 0,
   write('Não consegui encontrar uma engenharia para você =('),
@@ -57,7 +57,7 @@ query_possibilities(LikesMath, LikesTransports, LikesBuildings, LikesProducts, L
   write('São grandes as possibilidades de você gostar de: '), nl,
   forall(engineering_course(Name, LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers), (write('- '), write(Name), nl)),
   end_game.
-  
+
 query_all_remaining_possibilities(LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers):-
   write('Foram muitas perguntas, mas acho que você se encaixaria em uma destas engenharias: '), nl,
   forall(engineering_course(Name, LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers), (write('- '), write(Name), nl)),
@@ -225,7 +225,7 @@ user_likes_computers :-
   query_possibilities(LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers);
   user_likes_many_engineerings.
 
-user_likes_many_engineerings :- 
+user_likes_many_engineerings :-
   profile(likesMath, LikesMath),
   profile(likesTransports, LikesTransports),
   profile(likesBuildings, LikesBuildings),
