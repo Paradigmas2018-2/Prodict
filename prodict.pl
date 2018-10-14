@@ -1,40 +1,44 @@
 :- dynamic profile/2.
 
 % engineering_course(Name, LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers)
-engineering_course('Engenharia Aeronautica', s, s, n, s, n, s, n, s, s, n, s, n).
-engineering_course('Engenharia Ambiental', s, n, s, n, s, s, s, n, s, n, s, n).
-engineering_course('Engenharia Cartografica', s, n, n, n, n, s, s, s, s, n, s, n).
-engineering_course('Engenharia da Computação', s, n, n, s, s, n, n, n, s, s, s, s).
-engineering_course('Engenharia de Alimentos', s, n, n, s, n, n, s, n, s, n, s, n).
-engineering_course('Engenharia de Controle e Automacao', s, s, s, s, s, n, n, s, s, s, s, n).
-engineering_course('Engenharia de Horticultura', s, n, n, s, n, n, s, n, s, n, s, n).
-engineering_course('Engenharia de Minas', s, n, s, n, n, s, s, n, s, n, s, n).
-engineering_course('Engenharia de Petroleo e Gas', s, n, n, s, n, s, s, n, s, n, s, n).
-engineering_course('Engenharia de Seguranca do Trabalho', s, n, n, s, n, s, n, n, s, n, s, n).
-engineering_course('Engenharia Eletrica', s, n, n, n, n, n, s, n, s, n, s, n).
-engineering_course('Engenharia Florestal', s, n, s, n, n, s, s, n, s, n, s, n).
-% engineering_course('Engenharia Industrial', ).
-% engineering_course('Engenharia Mecatronica', ).
-% engineering_course('Engenharia Naval', ).
-% engineering_course('Engenharia Sanitaria', ).
-% engineering_course('Engenharia em Tecnologia Textil e da Indumentaria', ).
-% engineering_course('Engenharia Acustica', ).
-% engineering_course('Engenharia Agricola', ).
-% engineering_course('Engenharia Biomedica', ).
-% engineering_course('Engenharia Civil', ).
-% engineering_course('Engenharia em Agrimensura', ).
-% engineering_course('Engenharia de Aquicultura', ).
-% engineering_course('Engenharia de Energia', ).
-% engineering_course('Engenharia de Materiais', ).
-% engineering_course('Engenharia de Pesca', ).
-% engineering_course('Engenharia de Producao', ).
-% engineering_course('Engenharia de Telecomunicacoes', ).
-% engineering_course('Engenharia Fisica', ).
-% engineering_course('Engenharia Hidrica', ).
-% engineering_course('Engenharia Mecanica', ).
-% engineering_course('Engenharia Metalurgica', ).
-% engineering_course('Engenharia Quimica', ).
-% engineering_course('Engenharia Textil', ).
+
+engineering_course('Engenharia Aeronautica', s, s, s, s, _, _, n, s, s, _, _, n).
+engineering_course('Engenharia Ambiental', s, n, s, _, n, _, s, n, s, n, _, n).
+engineering_course('Engenharia Automotiva', s, s, s, s, _, _, _, s, _, s, _, n).
+engineering_course('Engenharia Cartografica', s, n, n, n, n, _, s, s, s, n, n, n).
+engineering_course('Engenharia da Computação', s, n, n, n, _, s, n, n, s, _, s, s).
+engineering_course('Engenharia de Alimentos', s, n, n, s, n, _, s, n, s, n, _, n).
+engineering_course('Engenharia de Controle e Automacao', s, _, s, _, s, _, n, _, _, s, _, s).
+engineering_course('Engenharia de Horticultura', s, n, n, s, n, s, s, n, s, _, _, n).
+engineering_course('Engenharia de Minas', s, n, s, n, _, s, s, _, s, n, _, n).
+engineering_course('Engenharia de Petroleo e Gas', s, n, s, n, s, s, _, s, _, n, _, n).
+engineering_course('Engenharia de Seguranca do Trabalho', s, n, n, s, n, _, n, _, s, n, _, n).
+engineering_course('Engenharia de Software', s, n, n, s, _, n, n, n, n, s, _, s).
+engineering_course('Engenharia Eletrica', s, _, n, _, _, _, n, _, s, _, _, n).
+engineering_course('Engenharia Eletronica', s, n, n, _, s, _, n, _, s, s, _, s).
+engineering_course('Engenharia Florestal', s, n, n, n, n, _, s, n, s, n, _, n).
+engineering_course('Engenharia Industrial', s, _, s, s, _, n, n, s, s, _, _, n).
+engineering_course('Engenharia Mecatronica', s, n, n, _, s, _, n, _, s, s, _, _).
+engineering_course('Engenharia Naval', s, s, s, s, _, _, s, s, s, _, _, n).
+engineering_course('Engenharia Sanitaria', s, n, s, n, n, _, n, n, s, n, _, n).
+engineering_course('Engenharia em Tecnologia Textil e da Indumentaria', s, n, n, s, n, _, _, n, s, _, _, n).
+engineering_course('Engenharia Acustica', s, n, n, s, n, _, s, n, s, _, _, n).
+engineering_course('Engenharia Agricola', s, n, _, s, n, _, s, n, s, n, _, n).
+engineering_course('Engenharia Biomedica', s, n, n, s, n, _, n, n, s, n, _, n).
+engineering_course('Engenharia Civil', s, n, s, n, n, n, _, s, s, n, _, n).
+engineering_course('Engenharia em Agrimensura', s, n, s, n, n, s, n, n, s, n, _, n).
+engineering_course('Engenharia de Aquicultura', s, n, s, _, n, s, s, n, s, n, _, n).
+engineering_course('Engenharia de Energia', s, n, n, _, n, _, s, n, s, n, _, n).
+engineering_course('Engenharia de Materiais', s, n, n, s, n, s, n, _, s, n, _, n).
+engineering_course('Engenharia de Pesca', s, n, n, n, n, s, s, n, s, n, _, n).
+engineering_course('Engenharia de Producao', s, n, n, s, _, s, n, _, _, _, _, n).
+engineering_course('Engenharia de Telecomunicacoes', s, n, n, n, _, s, n, n, _, _, _, s).
+engineering_course('Engenharia Fisica', s, n, n, _, _, _, n, s, s, _, _, n).
+engineering_course('Engenharia Hidrica', s, n, _, _, n, s, s, n, _, n, s, n).
+engineering_course('Engenharia Mecanica', s, _, s, s, s, n, n, _, s, _, s, _).
+engineering_course('Engenharia Metalurgica', s, n, n, s, n, n, s, n, s, n, s, n).
+engineering_course('Engenharia Quimica', s, n, n, s, n, s, _, _, n, n, s, n).
+engineering_course('Engenharia Textil', s, n, s, s, s, n, n, _, s, s, s, n).
 
 start_game :-
   nl, write('Responda as perguntas e saiba quais engenharias mais se parecem com voce!'), nl, nl,
