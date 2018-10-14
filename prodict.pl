@@ -1,37 +1,18 @@
-:- style_check(-singleton).
 :- dynamic profile/2.
-:- dynamic engineering_course/13.
-:- dynamic clearBase/1.
-:- dynamic clearBase1/1.
-:- dynamic play/0.
-:- dynamic play/1.
-:- dynamic user_likes_math/0.
-:- dynamic user_likes_transports/0.
-:- dynamic user_likes_buildings/0.
-:- dynamic user_likes_products/0.
-:- dynamic user_likes_automation/0.
-:- dynamic user_likes_studies/0.
-:- dynamic user_likes_nature/0.
-:- dynamic user_likes_military/0.
-:- dynamic user_likes_hardware/0.
-:- dynamic user_likes_electronics/0.
-:- dynamic user_wants_publicuniversities/0.
-:- dynamic user_likes_computers/0.
 
-% Name, Math, Transport, Building, Product, Automation, Studies, Nature, Military, Hardware, Electronics, PublicUniversities, Computer
-
+% engineering_course(Name, LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers)
 engineering_course('Engenharia Aeronautica', s, s, n, s, n, s, n, s, s, n, s, n).
 engineering_course('Engenharia Ambiental', s, n, s, n, s, s, s, n, s, n, s, n).
 engineering_course('Engenharia Cartografica', s, n, n, n, n, s, s, s, s, n, s, n).
-engineering_course('Engenharia da Computação', s, n, n, n, s, n, n, n, s, s, s, s).
+engineering_course('Engenharia da Computação', s, n, n, s, s, n, n, n, s, s, s, s).
 engineering_course('Engenharia de Alimentos', s, n, n, s, n, n, s, n, s, n, s, n).
-% engineering_course('Engenharia de Controle e Automacao', ).
-% engineering_course('Engenharia de Horticultura', ).
-% engineering_course('Engenharia de Minas', ).
-% engineering_course('Engenharia de Petroleo e Gas', ).
-% engineering_course('Engenharia de Seguranca do Trabalho', ).
-% engineering_course('Engenharia Eletrica', ).
-% engineering_course('Engenharia Florestal', ).
+engineering_course('Engenharia de Controle e Automacao', s, s, s, s, s, n, n, s, s, s, s, n).
+engineering_course('Engenharia de Horticultura', s, n, n, s, n, n, s, n, s, n, s, n).
+engineering_course('Engenharia de Minas', s, n, s, n, n, s, s, n, s, n, s, n).
+engineering_course('Engenharia de Petroleo e Gas', s, n, n, s, n, s, s, n, s, n, s, n).
+engineering_course('Engenharia de Seguranca do Trabalho', s, n, n, s, n, s, n, n, s, n, s, n).
+engineering_course('Engenharia Eletrica', s, n, n, n, n, n, s, n, s, n, s, n).
+engineering_course('Engenharia Florestal', s, n, s, n, n, s, s, n, s, n, s, n).
 % engineering_course('Engenharia Industrial', ).
 % engineering_course('Engenharia Mecatronica', ).
 % engineering_course('Engenharia Naval', ).
@@ -57,21 +38,21 @@ engineering_course('Engenharia de Alimentos', s, n, n, s, n, n, s, n, s, n, s, n
 
 start_game :-
   nl, write('Responda as perguntas e saiba quais engenharias mais se parecem com voce!'), nl, nl,
-  user_likes_math.  
+  user_likes_math.
 
-end_round :-
+end_game :-
   nl, nl, write('Boa sorte na sua escolha!'), nl, nl, !, halt.
 
 query_possibilities(LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers):- 
   findall(Y, engineering_course(Y, LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers), L),
   length(L, N), N == 0,
   write('Não consegui encontrar uma engenharia para você =('),
-  end_round;
+  end_game;
   findall(X, engineering_course(X, LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers), L),
   length(L, N), N @=< 3,
   write('São grandes as possibilidades de você gostar de: '), nl,
   forall(engineering_course(Name, LikesMath, LikesTransports, LikesBuildings, LikesProducts, LikesAutomation, LikesStudies, LikesNature, LikesMilitary, LikesHardware, LikesElectronics, LikesPublicUniversities, LikesComputers), (write('- '), write(Name), nl)),
-  end_round.
+  end_game.
   
 user_likes_math :-
   write('Voce gosta de exatas (s/n)? '),
